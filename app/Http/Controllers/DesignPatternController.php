@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\classes\bloggerObserver;
 use App\classes\bloggerSubject;
+use App\classes\contextSearchStrategy;
 use App\classes\productOrder;
 use App\singleton\Singleton;
 use App\traits\Write;
@@ -57,5 +58,16 @@ class DesignPatternController extends Controller
         $twitterPerson->updateBlogs('3rd update');
         $this->writeln('third update not published as observer is not still listen to subject');
         $this->writeln('END TESTING OBSERVER PATTERN');
+    }
+
+    public function tryStrategy(){
+        $array=range(1,10000000);
+        $contextSearchStrategyObj1 = new contextSearchStrategy("linear");
+        $contextSearchStrategyObj1->strategy->calculate_performance_of_search_algorithm($array,10000000);
+        echo "<hr />";
+        $contextSearchStrategyObj2 = new contextSearchStrategy("binary");
+        $contextSearchStrategyObj2->strategy->calculate_performance_of_search_algorithm($array,9999999);
+      
+
     }
 }
