@@ -9,11 +9,13 @@ use App\traits\Write;
 class bloggerObserver implements InterfacesBloggerObserver
 {
     use Write;
-    public function __construct() {
+    public $name;
+    public function __construct($name) {
+      $this->name = $name;
     }
     public function update(BloggerSubject $subject) {
       $this->writeln('*IN BLOG OBSERVER - NEW BLOGGer ALERT*');
-      $this->writeln(' new Blog update: '.$subject->getBlogs());
+      $this->writeln($this->name."   see     ".$subject->getBlogs());
       $this->writeln('*IN BLOG OBSERVER - BLOG BLOGGer ALERT OVER*');      
     }
-}    
+}   

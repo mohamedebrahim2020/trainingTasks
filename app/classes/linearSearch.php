@@ -12,8 +12,7 @@ class linearSearch implements StrategySearch
         for($i = 0; $i < $n; $i++) 
         { 
             if($array[$i] == $int) 
-                
-            echo ("linear execution time".number_format(microtime(true)- $start,10)); 
+                echo ("linear execution time".number_format(microtime(true)- $start,10)); 
                 
         } 
         

@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/singletone','DesignPatternController@trySingletone');
+Route::get('/dependencyInjection','DesignPatternController@tryDependencyInjection');
 Route::get('/factory','DesignPatternController@tryFactory');
 Route::get('/observer','DesignPatternController@tryObserver');
 Route::get('/strategy','DesignPatternController@tryStrategy');

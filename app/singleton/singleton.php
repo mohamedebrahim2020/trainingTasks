@@ -4,6 +4,27 @@ namespace App\singleton;
 final class Singleton
 {
     private $taxes;
+    private $counter = 0;
+
+    public function getCounter()
+    {
+      return $this->counter;
+    }
+
+    public function incrementCounter()
+    {
+      $this->counter++;
+    }
+
+    public function counterIsOdd()
+    {
+      return $this->counter % 2 == 0 ? FALSE : TRUE;
+    }
+
+    // public  function tearDown()
+    // {
+    //   $this->counter = 0;
+    // }
 
     /**
      * gets the instance via lazy initialization (created on first usage)

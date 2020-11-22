@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\classes\bloggerObserver;
 use App\classes\bloggerSubject;
 use App\classes\contextSearchStrategy;
+use App\classes\DependencyInjection;
 use App\classes\productOrder;
 use App\singleton\Singleton;
 use App\traits\Write;
@@ -27,6 +28,17 @@ class DesignPatternController extends Controller
         var_dump($instance);
     }
 
+    public function tryDependencyInjection(DependencyInjection $instance){
+        $instance->setTaxes(30);
+        var_dump($instance);
+
+        $instance->setTaxes(100);
+        var_dump($instance);
+
+        $instance->setTaxes(50);
+        var_dump($instance);
+    }
+
     public function tryFactory(){
         $productOrder = new productOrder;
         var_dump($productOrder->getproductOrders());
@@ -45,15 +57,19 @@ class DesignPatternController extends Controller
         //make blogger (person who make blog)
         $twitterPerson = new bloggerSubject(); 
         //instantiate blog
-        $tweet = new bloggerObserver();
+        $follower = new bloggerObserver("aly");
+        $follower2 = new bloggerObserver("adhme");
+        
         //add this blog as an observer for blogger person
-        $twitterPerson->attach($tweet);
+        $twitterPerson->attach($follower);
+        $twitterPerson->attach($follower2);
+
         //update blogger subject and notify observer 
         $twitterPerson->updateBlogs('1st update');
         //re update blogger subject and notify observer
         $twitterPerson->updateBlogs('2nd update');
         //remove blog observer
-        $twitterPerson->detach($tweet);
+        $twitterPerson->detach($follower);
         //re update blogger subject but not notify the observer as it becomes no observer
         $twitterPerson->updateBlogs('3rd update');
         $this->writeln('third update not published as observer is not still listen to subject');
@@ -66,7 +82,7 @@ class DesignPatternController extends Controller
         $contextSearchStrategyObj1->strategy->calculate_performance_of_search_algorithm($array,10000000);
         echo "<hr />";
         $contextSearchStrategyObj2 = new contextSearchStrategy("binary");
-        $contextSearchStrategyObj2->strategy->calculate_performance_of_search_algorithm($array,9999999);
+        $contextSearchStrategyObj2->strategy->calculate_performance_of_search_algorithm($array,10000000);
       
 
     }
