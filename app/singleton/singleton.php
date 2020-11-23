@@ -21,10 +21,10 @@ final class Singleton
       return $this->counter % 2 == 0 ? FALSE : TRUE;
     }
 
-    // public  function tearDown()
-    // {
-    //   $this->counter = 0;
-    // }
+    public  function tearDown()
+    {
+      $this->counter = 0;
+    }
 
     /**
      * gets the instance via lazy initialization (created on first usage)

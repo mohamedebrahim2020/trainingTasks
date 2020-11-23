@@ -22,7 +22,7 @@ class SingletonTest extends TestCase
         $this->assertEquals(0, $foo->getCounter());
         $foo->incrementCounter();
         $this->assertEquals(1, $foo->getCounter());
-       // $foo->tearDown();
+       $foo->tearDown();
     }
 
     public function testIsOdd()
