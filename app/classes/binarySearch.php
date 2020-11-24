@@ -6,17 +6,25 @@ use App\interfaces\StrategySearch;
 
 class binarySearch implements StrategySearch
 {
-    public function calculate_performance_of_search_algorithm($array,$int){
+    public $array;
+    public $int;
+
+    public function __construct($array , $int) {
+ 
+        $this->array = $array;
+        $this->int = $int;
+    }
+    public function calculateAlgorithmPerformance(){
         $l = 0;
-        $r = count($array)-1;
+        $r = count( $this->array)-1;
         $start = microtime(true);
         while ($l <= $r) 
     { 
         $m = $l + ($r - $l) / 2; 
         // check $int in middle;
-        if ($array[$m] == $int) 
+        if ( $this->array[$m] == $this->int) 
              break;
-        if ($array[$m] < $int) 
+        if ( $this->array[$m] < $this->int) 
             $l = $m + 1; 
         else
             $r = $m - 1; 

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\classes\binarySearch;
 use App\classes\bloggerObserver;
 use App\classes\bloggerSubject;
 use App\classes\contextSearchStrategy;
 use App\classes\DependencyInjection;
+use App\classes\linearSearch;
 use App\classes\productOrder;
 use App\singleton\Singleton;
 use App\traits\Write;
@@ -78,11 +80,20 @@ class DesignPatternController extends Controller
 
     public function tryStrategy(){
         $array=range(1,10000000);
-        $contextSearchStrategyObj1 = new contextSearchStrategy("linear");
-        $contextSearchStrategyObj1->strategy->calculate_performance_of_search_algorithm($array,10000000);
+        // $contextSearchStrategyObj1 = new contextSearchStrategy("linear");
+        // $contextSearchStrategyObj1->strategy->calculate_performance_of_search_algorithm($array,10000000);
+        // echo "<hr />";
+        // $contextSearchStrategyObj2 = new contextSearchStrategy("binary");
+        // $contextSearchStrategyObj2->strategy->calculate_performance_of_search_algorithm($array,10000000);
+
+        // updated code 
+
+        $contextObj1 = new contextSearchStrategy(new linearSearch($array,10000000));
+        $contextObj2 = new contextSearchStrategy(new binarySearch($array,10000000));
+        $strategyExecutedTime1 = $contextObj1->executeStrategy();
         echo "<hr />";
-        $contextSearchStrategyObj2 = new contextSearchStrategy("binary");
-        $contextSearchStrategyObj2->strategy->calculate_performance_of_search_algorithm($array,10000000);
+        $strategyExecutedTime2 = $contextObj2->executeStrategy();
+
       
 
     }
