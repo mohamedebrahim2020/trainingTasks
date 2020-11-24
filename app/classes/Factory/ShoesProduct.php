@@ -1,9 +1,9 @@
 <?php
 
-namespace App\classes;
+namespace App\classes\Factory;
 use App\interfaces\Product;
 
-class shoesProduct implements Product
+class ShoesProduct implements Product
 {
     protected $model = 'shoes';
     protected $price = 60;

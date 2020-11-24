@@ -1,5 +1,5 @@
 <?php
-namespace App\singleton;
+namespace App\classes\Singleton;
 
 final class Singleton
 {

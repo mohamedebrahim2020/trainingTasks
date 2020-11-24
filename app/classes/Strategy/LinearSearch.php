@@ -1,10 +1,10 @@
 <?php
 
-namespace App\classes;
+namespace App\classes\Strategy;
 
 use App\interfaces\StrategySearch;
 
-class linearSearch implements StrategySearch
+class LinearSearch implements StrategySearch
 {
     public $array;
     public $int;

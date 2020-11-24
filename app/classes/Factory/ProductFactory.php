@@ -1,8 +1,8 @@
 <?php
 
-namespace App\classes;
+namespace App\classes\Factory;
 
-class productFactory
+class ProductFactory
 {
     protected $product;
     public function make($model = null)

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\classes;
+namespace App\classes\Strategy;
 
 use App\interfaces\StrategySearch;
 
-class contextSearchStrategy
+class ContextSearchStrategy
 {
     public $strategy = NULL; 
   

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\classes;
+namespace App\classes\Factory;
 
-class productOrder 
+class ProductOrder 
 {
     protected $productOrders = array();
     protected $product;

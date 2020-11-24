@@ -1,12 +1,12 @@
 <?php
 
-namespace App\classes;
+namespace App\classes\Observer;
 
 use App\interfaces\BloggerObserver as InterfacesBloggerObserver;
 use App\interfaces\BloggerSubject;
 use App\traits\Write;
 
-class bloggerObserver implements InterfacesBloggerObserver
+class BloggerObserver implements InterfacesBloggerObserver
 {
     use Write;
     public $name;

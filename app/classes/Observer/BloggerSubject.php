@@ -1,11 +1,11 @@
 <?php
 
-namespace App\classes;
+namespace App\classes\Observer;
 
 use App\interfaces\BloggerObserver;
 use App\interfaces\BloggerSubject as InterfacesBloggerSubject;
 
-class bloggerSubject implements InterfacesBloggerSubject
+class BloggerSubject implements InterfacesBloggerSubject
 {
     private $blogs = NULL;
     private $observers = array();

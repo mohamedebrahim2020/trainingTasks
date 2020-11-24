@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\classes\binarySearch;
-use App\classes\bloggerObserver;
-use App\classes\bloggerSubject;
-use App\classes\contextSearchStrategy;
-use App\classes\DependencyInjection;
-use App\classes\linearSearch;
-use App\classes\productOrder;
-use App\singleton\Singleton;
+use App\classes\Strategy\BinarySearch;
+use App\classes\Observer\BloggerObserver;
+use App\classes\Observer\BloggerSubject;
+use App\classes\Strategy\ContextSearchStrategy;
+use App\classes\DependencyInjection\DependencyInjection;
+use App\classes\Strategy\LinearSearch;
+use App\classes\Factory\ProductOrder;
+use App\classes\Singleton\Singleton;
+use App\classes\Strategy\ContextSearchStrategy as StrategyContextSearchStrategy;
 use App\traits\Write;
-use Illuminate\Http\Request;
 
 class DesignPatternController extends Controller
 {
@@ -42,7 +42,7 @@ class DesignPatternController extends Controller
     }
 
     public function tryFactory(){
-        $productOrder = new productOrder;
+        $productOrder = new ProductOrder;
         var_dump($productOrder->getproductOrders());
  
         $productOrder->order('jacket');
@@ -57,10 +57,10 @@ class DesignPatternController extends Controller
         $this->writeln('BEGIN TESTING OBSERVER PATTERN');
         $this->writeln('');
         //make blogger (person who make blog)
-        $twitterPerson = new bloggerSubject(); 
+        $twitterPerson = new BloggerSubject(); 
         //instantiate blog
-        $follower = new bloggerObserver("aly");
-        $follower2 = new bloggerObserver("adhme");
+        $follower = new BloggerObserver("aly");
+        $follower2 = new BloggerObserver("adhme");
         
         //add this blog as an observer for blogger person
         $twitterPerson->attach($follower);
@@ -88,8 +88,8 @@ class DesignPatternController extends Controller
 
         // updated code 
 
-        $contextObj1 = new contextSearchStrategy(new linearSearch($array,10000000));
-        $contextObj2 = new contextSearchStrategy(new binarySearch($array,10000000));
+        $contextObj1 = new ContextSearchStrategy(new LinearSearch($array,10000000));
+        $contextObj2 = new ContextSearchStrategy(new BinarySearch($array,10000000));
         $strategyExecutedTime1 = $contextObj1->executeStrategy();
         echo "<hr />";
         $strategyExecutedTime2 = $contextObj2->executeStrategy();
