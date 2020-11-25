@@ -1,4 +1,5 @@
 <?php
+
 namespace App\classes\Singleton;
 
 final class Singleton
@@ -8,35 +9,36 @@ final class Singleton
 
     public function getCounter()
     {
-      return $this->counter;
+        return $this->counter;
     }
 
     public function incrementCounter()
     {
-      $this->counter++;
+        $this->counter++;
     }
 
     public function counterIsOdd()
     {
-      return $this->counter % 2 == 0 ? FALSE : TRUE;
+        return $this->counter % 2 == 0 ? false : true;
     }
 
-    public  function tearDown()
+    public function tearDown()
     {
-      $this->counter = 0;
+        $this->counter = 0;
     }
 
     /**
      * gets the instance via lazy initialization (created on first usage)
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         static $instance = null;
-        
+
         if (null === $instance) {
-           $instance = new static();
+            $instance = new static();
         }
         return $instance;
-     }
+    }
 
     /**
      * is not allowed to call from outside to prevent from creating multiple instances,
@@ -62,6 +64,6 @@ final class Singleton
 
     public function getTaxes($total)
     {
-      return $this->taxes = $total*0.14 ;
+        return $this->taxes = $total * 0.14 ;
     }
 }

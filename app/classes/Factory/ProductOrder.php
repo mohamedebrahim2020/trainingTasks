@@ -2,26 +2,26 @@
 
 namespace App\classes\Factory;
 
-class ProductOrder 
+class ProductOrder
 {
     protected $productOrders = array();
     protected $product;
-    
+
 
     public function __construct()
     {
-      $this->product = new productFactory();
+        $this->product = new productFactory();
     }
 
-    public function order($model=null,$quantity=1)
+    public function order($model = null, $quantity = 1)
     {
-      $product = $this->product->make($model);
-      $productPrice = $product->getProductPrice();
-      $this->productOrders[]=$product->getProductModel().":".$productPrice;
+        $product = $this->product->make($model);
+        $productPrice = $product->getProductPrice();
+        $this->productOrders[] = $product->getProductModel() . ":" . $productPrice;
     }
 
     public function getProductOrders()
     {
-      return $this->productOrders;
+        return $this->productOrders;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\classes\Factory;
+
 use App\interfaces\Product;
 
 class ShoesProduct implements Product
@@ -10,12 +11,11 @@ class ShoesProduct implements Product
 
     public function getProductModel()
     {
-      return $this->model;
+        return $this->model;
     }
 
     public function getProductPrice()
     {
-      return $this->price;
+        return $this->price;
     }
-
 }

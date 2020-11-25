@@ -10,27 +10,27 @@ use App\classes\DependencyInjection\DependencyInjection;
 use App\classes\Strategy\LinearSearch;
 use App\classes\Factory\ProductOrder;
 use App\classes\Singleton\Singleton;
-use App\classes\Strategy\ContextSearchStrategy as StrategyContextSearchStrategy;
 use App\traits\Write;
 
 class DesignPatternController extends Controller
 {
-    use Write;
-    public function trySingletone(){
+    use Write ;
+
+    public function trySingletone()
+    {
         $instance = Singleton::getInstance();
         $taxes = $instance->getTaxes(30);
         var_dump($instance);
-
         $instance = Singleton::getInstance();
         $taxes = $instance->getTaxes(100);
         var_dump($instance);
-
         $instance = Singleton::getInstance();
         $taxes = $instance->getTaxes(50);
         var_dump($instance);
     }
 
-    public function tryDependencyInjection(DependencyInjection $instance){
+    public function tryDependencyInjection(DependencyInjection $instance)
+    {
         $instance->setTaxes(30);
         var_dump($instance);
 
@@ -41,31 +41,28 @@ class DesignPatternController extends Controller
         var_dump($instance);
     }
 
-    public function tryFactory(){
-        $productOrder = new ProductOrder;
+    public function tryFactory()
+    {
+        $productOrder = new ProductOrder();
         var_dump($productOrder->getproductOrders());
- 
         $productOrder->order('jacket');
         var_dump($productOrder->getproductOrders());
- 
         $productOrder->order('shoes');
         var_dump($productOrder->getproductOrders());
     }
 
-    public function tryObserver(){
-        
+    public function tryObserver()
+    {
         $this->writeln('BEGIN TESTING OBSERVER PATTERN');
         $this->writeln('');
         //make blogger (person who make blog)
-        $twitterPerson = new BloggerSubject(); 
+        $twitterPerson = new BloggerSubject();
         //instantiate blog
         $follower = new BloggerObserver("aly");
         $follower2 = new BloggerObserver("adhme");
-        
         //add this blog as an observer for blogger person
         $twitterPerson->attach($follower);
         $twitterPerson->attach($follower2);
-
         //update blogger subject and notify observer 
         $twitterPerson->updateBlogs('1st update');
         //re update blogger subject and notify observer
@@ -78,23 +75,19 @@ class DesignPatternController extends Controller
         $this->writeln('END TESTING OBSERVER PATTERN');
     }
 
-    public function tryStrategy(){
-        $array=range(1,10000000);
+    public function tryStrategy()
+    {
+        $array = range(1, 10000000);
         // $contextSearchStrategyObj1 = new contextSearchStrategy("linear");
         // $contextSearchStrategyObj1->strategy->calculate_performance_of_search_algorithm($array,10000000);
         // echo "<hr />";
         // $contextSearchStrategyObj2 = new contextSearchStrategy("binary");
         // $contextSearchStrategyObj2->strategy->calculate_performance_of_search_algorithm($array,10000000);
-
         // updated code 
-
-        $contextObj1 = new ContextSearchStrategy(new LinearSearch($array,10000000));
-        $contextObj2 = new ContextSearchStrategy(new BinarySearch($array,10000000));
+        $contextObj1 = new ContextSearchStrategy(new LinearSearch($array, 10000000));
+        $contextObj2 = new ContextSearchStrategy(new BinarySearch($array, 10000000));
         $strategyExecutedTime1 = $contextObj1->executeStrategy();
         echo "<hr />";
         $strategyExecutedTime2 = $contextObj2->executeStrategy();
-
-      
-
     }
 }

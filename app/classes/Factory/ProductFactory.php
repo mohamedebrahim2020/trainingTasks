@@ -7,8 +7,10 @@ class ProductFactory
     protected $product;
     public function make($model = null)
     {
-        if ($model == 'jacket')
-        return $this->product = new jacketProduct();
-        return $this->product = new shoesProduct();
+        if ($model == 'jacket') {
+            return $this->product = new jacketProduct();
+        } else {
+            return $this->product = new shoesProduct();
+        }
     }
 }

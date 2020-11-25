@@ -6,16 +6,16 @@ use App\interfaces\StrategySearch;
 
 class ContextSearchStrategy
 {
-    public $strategy = NULL; 
-  
-    public function __construct(StrategySearch $strategy) {
- 
-       $this->strategy = $strategy;
-    } 
+    public $strategy = null;
 
-    public function executeStrategy(){
-        return $this->strategy->calculateAlgorithmPerformance();
+    public function __construct(StrategySearch $strategy)
+    {
+
+        $this->strategy = $strategy;
     }
 
-
+    public function executeStrategy()
+    {
+        return $this->strategy->calculateAlgorithmPerformance();
+    }
 }
